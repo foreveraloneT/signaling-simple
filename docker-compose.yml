@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  signaling:
+    build: .
+    image: poc-video-call-server
+    ports:
+      - 8100:8100
