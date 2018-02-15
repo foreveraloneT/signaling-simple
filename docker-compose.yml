@@ -6,3 +6,15 @@ services:
     image: poc-video-call-server
     ports:
       - 8100:8100
+    environment:
+      - VIRTUAL_HOST=signal.ccd.dev.scale360.solutions
+      - VIRTUAL_PROTO=https
+
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /etc/letsencrypt/live/signal.ccd.dev.scale360.solutions:/etc/nginx/certs

@@ -1,8 +1,4 @@
-FROM node:6.12.3-alpine
-
-# Install git
-RUN apk update
-RUN apk add git
+FROM node:8.9.4
 
 # Create app directory
 RUN mkdir -p /usr/src/app
