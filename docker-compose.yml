@@ -4,14 +4,12 @@ services:
   signaling:
     build: .
     image: poc-video-call-server
+    # ports:
+    #   - 8100:8100
     expose:
-      - 80
-    ports:
-      - 8100:8100
+      - 8100
     environment:
       - VIRTUAL_HOST=client.ccd.dev.scale360.solutions
-      - VIRTUAL_PROTO=https
-      - VIRTUAL_PORT=443
 
   proxy:
     image: jwilder/nginx-proxy
