@@ -1,16 +1,6 @@
 version: '3'
 
 services:
-  signaling:
-    build: .
-    image: poc-video-call-server
-    # ports:
-    #   - 8100:8100
-    expose:
-      - 8100
-    environment:
-      - VIRTUAL_HOST=client.ccd.dev.scale360.solutions
-
   proxy:
     image: jwilder/nginx-proxy
     ports:
@@ -18,4 +8,12 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - /etc/letsencrypt/live/client.ccd.dev.scale360.solutions:/etc/nginx/certs
+      - /etc/letsencrypt/live/signal.ccd.dev.scale360.solutions:/etc/nginx/certs
+
+  signaling:
+    build: .
+    image: poc-video-call-server
+    expose:
+      - 8100
+    environment:
+      - VIRTUAL_HOST=signal.ccd.dev.scale360.solutions
