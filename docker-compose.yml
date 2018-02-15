@@ -17,3 +17,4 @@ services:
       - 8100
     environment:
       - VIRTUAL_HOST=signal.ccd.dev.scale360.solutions
+    restart: always
